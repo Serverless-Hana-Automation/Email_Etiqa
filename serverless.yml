@@ -1,4 +1,4 @@
-service: Email_Etiqa
+service: Hana-Automation-Email_Etiqa
 
 provider:
   name: aws
