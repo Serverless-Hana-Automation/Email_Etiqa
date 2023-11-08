@@ -1,0 +1,43 @@
+service: Hana-Automation
+
+provider:
+  name: aws
+  runtime: python3.11
+  stage: staging
+  region: ap-southeast-1
+  iam:
+    role: "${ssm:/RescheduleCallFUnction/${sls:stage}/lambda/ROLE}"
+
+# package:
+#   individually: true
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    zip: true
+
+functions:
+  Email_Etiqa:
+    handler: main.main
+    description: Email Etiqa Automation function
+    events:
+      - s3:
+          bucket: "${ssm:/Email_Etiqa/${sls:stage}/lambda/BUCKET_NAME}"
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: Hana Call Summary Report/
+            - suffix: .xlsx
+          existing: true
+
+    package:
+      patterns:
+        - "!node_modules/**"
+        - "!yarn.lock"
+        - ".serverless"
+
+    environment:
+      BUCKET_NAME: "${ssm:/Email_Etiqa/${sls:stage}/lambda/BUCKET_NAME}"
+      REGION: "${ssm:/RescheduleCallFUnction/${sls:stage}/lambda/REGION}"
