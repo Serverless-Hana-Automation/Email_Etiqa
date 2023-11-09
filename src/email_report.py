@@ -6,8 +6,8 @@ from email.mime.application import MIMEApplication
 
 def send_report(file_content, today_date):
     # Set up your email and SMTP server details
-    sender_email = 'yunkang@regovtech.com'
-    sender_password = 'Yunkang00--'
+    SENDER_EMAIL= os.environ["SENDER_EMAIL"]
+    EMAIL_PASS = os.environ['EMAIL_PASS']
     recipients = ['yuzanita.y@etiqa.com.my','shazalina.a@etiqa.com.my','nurlina.omar@etiqa.com.my','zuriyana_ab@etiqa.com.my','ainsuhara.n@etiqa.com.my']
     cc_recipients = ['HANAsupport@regovtech.com', 'paul.agada@regovtech.com', 'ryanewe@regovtech.com']
     smtp_server = 'smtp.gmail.com'
