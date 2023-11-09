@@ -6,6 +6,8 @@ import os
 
 BUCKET_NAME= os.environ["BUCKET_NAME"]
 REGION = os.environ['REGION']
+SENDER_EMAIL = os.environ['SENDER_EMAIL']
+EMAIL_PASS = os.environ['EMAIL_PASS']
 
 today_date = datetime.now().strftime('%d-%m-%Y')
 tomorrow_date = today_date + timedelta(days=1)
@@ -24,7 +26,7 @@ def main(event, context):
         s3_response_report = s3_client.get_object(Bucket=BUCKET_NAME, Key=object_key)
         file_content = s3_response_report['Body'].read()
 
-        send_report(file_content, today_date)
+        send_report(file_content, today_date, SENDER_EMAIL, EMAIL_PASS)
 
         print("Email for Hana Daily Summary Report has been sent")
 
@@ -39,7 +41,7 @@ def main(event, context):
         s3_response_sms = s3_client.get_object(Bucket=BUCKET_NAME, Key=object_key_2)
         file_content = s3_response_sms['Body'].read()
         
-        send_sms(file_content, today_date, tomorrow_date_str)
+        send_sms(file_content, today_date, tomorrow_date_str, SENDER_EMAIL, EMAIL_PASS)
 
         print("Email for SMS Blast has been sent")
 
