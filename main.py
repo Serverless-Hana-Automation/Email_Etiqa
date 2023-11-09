@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
-from src.email_report import send_report, send_sms
+from src.email_report import send_report
+from src.email_SMS import send_sms
 import boto3
 from botocore.exceptions import ClientError
 import os
