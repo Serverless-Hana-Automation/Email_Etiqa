@@ -4,9 +4,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 
 
-def send_sms(file_content, tomorrow_date_str, EMAIL_PASS):
-    # Set up your email and SMTP server details
-    sender_email = 'yunkang@regovtech.com'
+def send_sms(file_content, tomorrow_date_str, SENDER_EMAIL, EMAIL_PASS):
+    
     # recipients = ['yuzanita.y@etiqa.com.my','shazalina.a@etiqa.com.my','nurlina.omar@etiqa.com.my','zuriyana_ab@etiqa.com.my','ainsuhara.n@etiqa.com.my']
     # cc_recipients = ['HANAsupport@regovtech.com', 'paul.agada@regovtech.com', 'ryanewe@regovtech.com']
     recipients = ['irfan.k@regovtech.com']
@@ -17,7 +16,7 @@ def send_sms(file_content, tomorrow_date_str, EMAIL_PASS):
 
     # Create the email message
     message = MIMEMultipart()
-    message['From'] = sender_email
+    message['From'] = SENDER_EMAIL
     message['To'] = ', '.join(recipients)
     message['Cc'] = ', '.join(cc_recipients)
     message['Subject'] = f'SMS BLAST - {tomorrow_date_str}'
@@ -134,10 +133,10 @@ def send_sms(file_content, tomorrow_date_str, EMAIL_PASS):
       server.starttls()
 
       # Login to your email account
-      server.login(sender_email, EMAIL_PASS)
+      server.login(SENDER_EMAIL, EMAIL_PASS)
 
       # Send the email to recipients
-      server.sendmail(sender_email, recipients, message.as_string())
+      server.sendmail(SENDER_EMAIL, recipients, message.as_string())
 
       # Close the SMTP server
       server.quit()
