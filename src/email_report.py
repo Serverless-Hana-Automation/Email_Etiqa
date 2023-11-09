@@ -8,8 +8,8 @@ def send_report(file_content, today_date):
     # Set up your email and SMTP server details
     SENDER_EMAIL= os.environ["SENDER_EMAIL"]
     EMAIL_PASS = os.environ['EMAIL_PASS']
-    recipients = ['yuzanita.y@etiqa.com.my','shazalina.a@etiqa.com.my','nurlina.omar@etiqa.com.my','zuriyana_ab@etiqa.com.my','ainsuhara.n@etiqa.com.my']
-    cc_recipients = ['HANAsupport@regovtech.com', 'paul.agada@regovtech.com', 'ryanewe@regovtech.com']
+    recipients = ['irfan.k@regovtech.com']
+    cc_recipients = ['aina.tas@regovtech.com']
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587  # Use 587 for TLS or 465 for SSL
 
