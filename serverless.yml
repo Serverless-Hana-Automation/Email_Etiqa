@@ -1,4 +1,4 @@
-service: Hana-Automation
+service: Email-Automation
 
 provider:
   name: aws
@@ -42,3 +42,4 @@ functions:
       SENDER_EMAIL: "${ssm:/Email_Etiqa/${sls:stage}/lambda/SENDER_EMAIL}"
       EMAIL_PASS: "${ssm:/Email_Etiqa/${sls:stage}/lambda/EMAIL_PASS}"
       REGION: "${ssm:/RescheduleCallFUnction/${sls:stage}/lambda/REGION}"
+
