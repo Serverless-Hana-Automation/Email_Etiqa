@@ -1,4 +1,4 @@
-service: Hana-Automation-Email-Etiqa
+service: Hana-Automation
 
 provider:
   name: aws
@@ -30,7 +30,6 @@ functions:
           rules:
             - prefix: Hana Call Summary Report/
             - suffix: .xlsx
-          existing: true
 
     package:
       patterns:
