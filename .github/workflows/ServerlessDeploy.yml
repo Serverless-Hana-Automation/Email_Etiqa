@@ -35,8 +35,8 @@ jobs:
       - name: Install Serverless Framework
         run: npm install -g serverless@latest
 
-      # - name: Install Serverless Python Requirements
-      #   run: npm install --save serverless-python-requirements
+      - name: Install Serverless Python Requirements
+        run: npm install --save serverless-python-requirements
 
       - name: Check docker version
         run: docker --version
@@ -50,6 +50,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           sls deploy --stage staging
+          #sls remove
 
   deploy_production:
     if: github.ref == 'refs/heads/production'

@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
-from src.email_report import send_report, send_sms
+from src.email_report import send_report
+from src.email_SMS import send_sms
 import boto3
 from botocore.exceptions import ClientError
 import os
@@ -7,7 +8,7 @@ import os
 BUCKET_NAME= os.environ["BUCKET_NAME"]
 REGION = os.environ['REGION']
 
-today_date = datetime.now().strftime('%d-%m-%Y')
+today_date = datetime.now()
 tomorrow_date = today_date + timedelta(days=1)
 tomorrow_date_str = tomorrow_date.strftime('%d-%m-%Y')
 

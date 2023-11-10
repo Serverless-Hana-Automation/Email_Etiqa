@@ -1,4 +1,4 @@
-service: Hana-Automation
+service: Email-Automation
 
 provider:
   name: aws
@@ -30,7 +30,6 @@ functions:
           rules:
             - prefix: Hana Call Summary Report/
             - suffix: .xlsx
-          existing: true
 
     package:
       patterns:
@@ -40,4 +39,7 @@ functions:
 
     environment:
       BUCKET_NAME: "${ssm:/Email_Etiqa/${sls:stage}/lambda/BUCKET_NAME}"
+      SENDER_EMAIL: "${ssm:/Email_Etiqa/${sls:stage}/lambda/SENDER_EMAIL}"
+      EMAIL_PASS: "${ssm:/Email_Etiqa/${sls:stage}/lambda/EMAIL_PASS}"
       REGION: "${ssm:/RescheduleCallFUnction/${sls:stage}/lambda/REGION}"
+
