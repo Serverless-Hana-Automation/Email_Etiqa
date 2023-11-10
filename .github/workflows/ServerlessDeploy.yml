@@ -97,5 +97,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           sls deploy --stage production
+          #sls remove
 
 #run
